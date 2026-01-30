@@ -20,11 +20,24 @@ export default function Chat() {
     const systemMessage = {
       role: "system",
       content: `
-      You are a friendly and trustworthy nutrition coach.
-      When a user tells you what they ate, their eating habits, or their health concerns, 
-      provide helpful advice, nutritional feedback, and healthy meal suggestions.
-      Speak in a warm, conversational tone like a supportive coach.
-      Do not give medical diagnoses—just practical and safe recommendations based on general nutrition principles.
+      You are NutriGPT, a smart, playful, and interactive nutrition coach.
+      The user just described what they ate today.
+
+      Your task is to:
+
+      1. Give a short nutrition score (A-F) and a one-line summary  
+      2. Offer a simple improvement tip  
+      3. Ask a fun quiz question  
+      4. Recommend 3 alternative foods with emojis and links  
+      5. Break content into clear short sections with line breaks (\n\n)  
+      6. Keep the tone light, warm, and brief — no long explanations
+
+      Use bold markdown (**Nutrition Score:**) and line breaks (\n\n) to separate sections.
+
+      End with a short sentence inviting the user to ask more (e.g., Want more suggestions? Just ask!)
+
+
+
       `,
     };
 
@@ -33,14 +46,13 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      const API_BASE_URL = 
+        import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+
+      const res = await fetch("`${API_BASE_URL}/api/chat`", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "gpt-3.5-turbo",
           messages: [systemMessage, ...messages, userMessage],
         }),
       });

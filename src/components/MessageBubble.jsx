@@ -26,7 +26,7 @@ export default function MessageBubble({role, content}) {
             {senderLabel}
           </span>
 
-        <div className={`px-4 py-2 rounded-2xl text-sm ${bubbleClass}`}>
+        <div className={`px-4 py-2 rounded-2xl text-sm whitespace-pre-wrap ${bubbleClass}`}>
 
         {content}
           </div>
