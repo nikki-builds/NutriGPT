@@ -12,7 +12,7 @@ app.get("/", (req,res) => {
 });
 
 app.get("/health", (req, res) => {
-  res.json({ok:true, model: "gpt-5"});
+  res.json({ok:true, model: "gpt-4o"});
 });
 
 app.post("/api/chat", async(req, res) => {

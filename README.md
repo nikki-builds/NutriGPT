@@ -2,7 +2,7 @@
 
 ## 🌐 Live Demo
 
-**[View Live Demo]()**  
+**[View Live Demo](https://nutri-gpt.vercel.app/)**  
 _(Portfolio demo – some features are intentionally limited)_
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
